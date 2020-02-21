@@ -6,7 +6,7 @@ https://github.com/matterport/Mask_RCNN
 
 https://github.com/SUYEgit/Surgery-Robot-Detection-Segmentation
 
-สำหรับสร้าง ตาต้าเซท
+สำหรับสร้าง dataset
 
 http://www.robots.ox.ac.uk/~vgg/software/via/via_demo.html
 
