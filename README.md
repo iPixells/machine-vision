@@ -17,3 +17,11 @@ https://github.com/machine-vision/Unibot/tree/master/train
 detect
 
 https://github.com/iPixells/machine-vision/tree/master/detect
+
+server
+
+https://github.com/iPixells/machine-vision/tree/master/detect/server
+
+client
+
+https://github.com/iPixells/machine-vision/tree/master/detect/client
