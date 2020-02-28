@@ -39,7 +39,7 @@ from matplotlib import pyplot as plt
 # Root directory of the project
 ROOT_DIR = os.path.abspath("")
 
-dataset_dir = "data/unibot/"
+dataset_dir = "data_3/unibot/"
 
 # Import Mask RCNN
 sys.path.append(ROOT_DIR)  # To find local version of the library
@@ -77,7 +77,7 @@ class SurgeryConfig(Config):
     IMAGES_PER_GPU = 1
 
     # Number of classes (including background)
-    NUM_CLASSES = 1+ 2  # Background + objects
+    NUM_CLASSES = 1+ 1  # Background + objects
 
     # Number of training steps per epoch
     STEPS_PER_EPOCH = 100
@@ -97,9 +97,9 @@ class Dataset(utils.Dataset):
         subset: Subset to load: train or val or predict
         """
         # Add classes. We have only one class to add.
-        self.add_class("surgery", 1, "arm")
+        self.add_class("surgery", 1, "tpi")
         
-        self.add_class("surgery", 2, "ring")
+        #self.add_class("surgery", 2, "ring")
         """if hc is True:
             for i in range(1,14):
                 self.add_class("surgery", i, "{}".format(i))
@@ -124,7 +124,7 @@ class Dataset(utils.Dataset):
         #   'size': 100202
         # }
         # We mostly care about the x and y coordinates of each region
-        annotations = json.load(open(os.path.join(dataset_dir, "via_region_data.json")))
+        annotations = json.load(open(os.path.join(dataset_dir, "tpi.json")))
         annotations = annotations['_via_img_metadata']
         annotations = list(annotations.values())  # don't need the dict keys
         # The VIA tool saves images in the JSON even if they don't have any
@@ -180,7 +180,7 @@ class Dataset(utils.Dataset):
         # In the surgery dataset, pictures are labeled with name 'a' and 'r' representing arm and ring.
         for i, p in enumerate(class_names):
         #"name" is the attributes name decided when labeling, etc. 'region_attributes': {name:'a'}
-            if p['name'] == 'a':
+            if p['name'] == 'tpi':
                 class_ids[i] = 1
             elif p['name'] == 'b':
                 class_ids[i] = 2
