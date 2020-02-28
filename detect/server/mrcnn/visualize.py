@@ -43,15 +43,18 @@ divisor = 180.0
 
 radian = pi/divisor
 
+
+#ความกว้างของวัตถุ
 obj_width = 22
 
+#ความยาวของวัตถุ
 obj_height = 37
 
+#ความกว้างครึ่งหนึ่งของวัตถุ
 half_width = obj_width//2
 
+#ความยาวครึ่งหนึ่งของวัตถุ
 half_height = obj_height//2
-
-
 
 
 ############################################################d
@@ -108,6 +111,8 @@ def apply_mask(image, mask, color, alpha=0.5):
     #print(image)
     return image
 
+
+#function สำหรับ คำนวณหาองศา จาก จุด x,y
 def get_theta(x,y):
     #print(x)
     #print(y)
@@ -120,6 +125,7 @@ def get_theta(x,y):
     #theta
     return 360-theta 
 
+#function สำหรับ คำนวณหาองศา จาก จุด ความยาว และ องศา
 def get_coordbyangle(length,angle):
     global radian
 
@@ -128,11 +134,12 @@ def get_coordbyangle(length,angle):
     
     return angle_x,angle_y
 
+#function สำหรับ ลบจุด สอง จุด
 def get_coord_target(x1,y1,x2,y2):
     x = x1 - x2
     y = y1 - y2
     return x,y
-
+#function สำหรับ วาดเส้น สะท้อน องศา
 def draw(x,y,angle,side,ax):
     
     if side == 'height':
@@ -521,12 +528,12 @@ def display_instances(image, boxes, masks, class_ids, class_names,
             angle = get_theta(verts[n1][0]-x,verts[n1][1]-y)
             
             print("angle "+str(i+1)+" "+str(angle))
-            
+            # ตรวจจับความเอียงของวัตถุ
             if angle == 90.0:
               print(angle)
               nn = 10
               angle1 = get_theta(verts[nn][0] - verts[0][0],verts[nn][1] - verts[0][1])
-              ax.add_line(lines.Line2D([verts[nn][0],verts[0][0]],[verts[nn][1],verts[0][1]]))
+              #ax.add_line(lines.Line2D([verts[nn][0],verts[0][0]],[verts[nn][1],verts[0][1]]))
               print("angle1 "+str(angle1))
               
               angle1_ = 180 - angle1
@@ -544,13 +551,13 @@ def display_instances(image, boxes, masks, class_ids, class_names,
              nn = (n*80)//100
              
              result_angle = get_theta(verts[n1][0] - verts[nn][0],verts[n1][1] - verts[nn][1])
-             ax.add_line(lines.Line2D([verts[n1][0],verts[nn][0]],[verts[n1][1],verts[nn][1]]))
+             #ax.add_line(lines.Line2D([verts[n1][0],verts[nn][0]],[verts[n1][1],verts[nn][1]]))
              if result_angle < 165:
               nn =8
               angle_ = get_theta(verts[nn][0] - verts[0][0],verts[nn][1] - verts[0][1])
               print("angle_"+str(angle_))
 
-              ax.add_line(lines.Line2D([verts[nn][0],verts[0][0]],[verts[nn][1],verts[0][1]]))
+              #ax.add_line(lines.Line2D([verts[nn][0],verts[0][0]],[verts[nn][1],verts[0][1]]))
          
               if angle_ > 160 :
                result_angle = angle_ - 90
@@ -637,7 +644,7 @@ def display_instances(image, boxes, masks, class_ids, class_names,
              nn = (n*80)//100
 
              result_angle = get_theta(verts[nn][0]-verts[n-1][0],verts[nn][1]-verts[n-1][1])
-             ax.add_line(lines.Line2D([verts[nn][0],verts[n-1][0]],[verts[nn][1],verts[n-1][1]]))
+             #ax.add_line(lines.Line2D([verts[nn][0],verts[n-1][0]],[verts[nn][1],verts[n-1][1]]))
              if result_angle < 165:
               nn = 8
               angle_ = get_theta(verts[nn][0] - verts[0][0],verts[nn][1] - verts[0][1])
