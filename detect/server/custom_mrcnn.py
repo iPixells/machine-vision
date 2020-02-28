@@ -19,8 +19,8 @@ session = InteractiveSession(config=config)
 class custom_Mrcnn():
      
     def __init__(self,custom_config,socket):
-     self.class_names = ['BG', 'arm', 'ring']
-     PRETRAINED_MODEL_PATH = "mask_rcnn_surgery_0060.h5"
+     self.class_names = ['tpi', 'arm', 'ring']
+     PRETRAINED_MODEL_PATH = "tpi.h5"
      self.custom_config = custom_config
      self.socket = socket
      
